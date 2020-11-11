@@ -1,0 +1,68 @@
+package com.coforge.entity;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Car {
+
+	int car_id;
+	String car_comapny;
+	String Car_model;
+	int car_makeYEAR;
+	int engine;
+	
+	public Car() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	public Car(int car_id, String car_comapny, String car_model, int car_makeYEAR, int engine) {
+		super();
+		this.car_id = car_id;
+		this.car_comapny = car_comapny;
+		Car_model = car_model;
+		this.car_makeYEAR = car_makeYEAR;
+		this.engine = engine;
+	}
+
+	public int getCar_id() {
+		return car_id;
+	}
+
+	public void setCar_id(int car_id) {
+		this.car_id = car_id;
+	}
+
+	public String getCar_comapny() {
+		return car_comapny;
+	}
+
+	public void setCar_comapny(String car_comapny) {
+		this.car_comapny = car_comapny;
+	}
+
+	public String getCar_model() {
+		return Car_model;
+	}
+
+	public void setCar_model(String car_model) {
+		Car_model = car_model;
+	}
+
+	public int getCar_makeYEAR() {
+		return car_makeYEAR;
+	}
+
+	public void setCar_makeYEAR(int car_makeYEAR) {
+		this.car_makeYEAR = car_makeYEAR;
+	}
+
+	public int getEngine() {
+		return engine;
+	}
+
+	public void setEngine(int engine) {
+		this.engine = engine;
+	}
+	
+}

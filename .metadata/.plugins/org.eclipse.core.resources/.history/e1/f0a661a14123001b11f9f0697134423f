@@ -1,0 +1,13 @@
+package com.coforge.entity;
+
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType
+public class Customer {
+	private int Cust_id;
+	private String Cust_name;
+	private int phone;
+	private String address;
+	
+
+}

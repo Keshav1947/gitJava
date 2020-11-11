@@ -1,0 +1,65 @@
+package com.coforge.Marshaller;
+
+import java.io.File;
+
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.xml.sax.SAXException;
+
+import com.coforge.entity.Employee;
+
+public class EmployeeUnMarshaller {
+
+	public static void main(String[] args) throws JAXBException, SAXException{
+		
+			JAXBContext context = JAXBContext.newInstance(Employee.class);
+			
+			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+			Schema schema = sf.newSchema(new File("E:\\COFORGE java trainig\\JAXBSchemaProject\\src\\com\\coforge\\entity\\Employee11.xsd"));
+			
+			Unmarshaller unmarshaller = context.createUnmarshaller(); 
+			unmarshaller.setSchema(schema);
+			unmarshaller.setEventHandler(new EmployeeValidationEventHandler());
+			Employee employee = (Employee) unmarshaller.unmarshal(new File("d.\\person.xml"));
+			
+			System.out.println(employee.getEmployeeId()); 
+			System.out.println(employee.getName());
+			System.out.println(employee.getSalary());
+			System.out.println(employee.getAddress().getAddressLine1());
+			System.out.println(employee.getAddress().getAddressLine2());
+			System.out.println(employee.getAddress().getCity());
+			System.out.println(employee.getAddress().getState());
+			System.out.println(employee.getAddress().getCountry());
+			System.out.println(employee.getAddress().getZipCode());
+			 
+	}
+}
+
+class EmployeeValidationEventHandler implements ValidationEventHandler{
+
+	@Override
+	public boolean handleEvent(ValidationEvent event) {
+		// TODO Auto-generated method stub
+		System.out.print("\nEvent");
+		System.out.print("SEVERITY: " + event.getSeverity());
+		System.out.print("MESSAGE: " + event.getMessage());
+		System.out.print("LINKED EXCEPTION: " + event.getLinkedException());
+		System.out.print("LOCATOR");
+		System.out.print("LINE NUMBER: " + event.getLocator().getLineNumber());
+		System.out.print("column NUMBER: " + event.getLocator().getColumnNumber());
+		System.out.print("offset: " + event.getLocator().getOffset());
+		System.out.print("object: " + event.getLocator().getObject());
+		System.out.print("node: " + event.getLocator().getNode());
+		System.out.print("url: " + event.getLocator().getURL());
+		
+		return true;
+	}
+	
+}

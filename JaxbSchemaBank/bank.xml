@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bank>
+    <acc>1332</acc>
+    <balance>45002</balance>
+    <customer>
+        <address>Model Town Delhi</address>
+        <cust_id>102</cust_id>
+        <cust_name>Aman</cust_name>
+        <phone>456137890</phone>
+    </customer>
+</bank>

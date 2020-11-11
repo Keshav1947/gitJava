@@ -1,0 +1,37 @@
+package com.coforge.Marshaller;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
+import com.coforge.entity.Bank;
+import com.coforge.entity.Customer;
+
+
+
+public class BankMarshaller {
+	public static void main(String[] args)throws JAXBException, FileNotFoundException {
+		// TODO Auto-generated method stub
+		new BankMarshaller().runMarshaller();
+	}
+	private void runMarshaller() throws JAXBException, FileNotFoundException{
+		Bank b = createbank();		
+		JAXBContext context = JAXBContext.newInstance(Bank.class);
+		Marshaller marshaller = context.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+		FileOutputStream fileOutputStream= new FileOutputStream(new File("C:\\FullStack\\Jaxb\\bank.xml"));
+				
+		marshaller.marshal(b, fileOutputStream); 
+				
+		}
+	private Bank createbank() {
+		Customer c = new Customer(17,"Keshav",985631478,"Delhi");
+		Bank ba = new Bank(8565,85462,c);
+		return ba;
+	}
+}

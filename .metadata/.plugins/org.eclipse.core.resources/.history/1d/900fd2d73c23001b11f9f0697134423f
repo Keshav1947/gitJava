@@ -1,0 +1,13 @@
+package com.coforge.entity;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Car {
+
+	int car_id;
+	String car_comapny;
+	String Car_model;
+	int car_makeYEAR;
+	int engine;
+}
