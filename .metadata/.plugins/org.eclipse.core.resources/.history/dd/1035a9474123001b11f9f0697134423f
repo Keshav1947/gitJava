@@ -1,0 +1,13 @@
+package com.coforge.entity;
+
+public class Bank {
+	private int acc;
+	private int balance;
+	private Customer customer;
+	
+	public Bank() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+}

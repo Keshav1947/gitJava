@@ -1,0 +1,41 @@
+package com.coforge.Marshaller;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
+import com.coforge.entity.Car;
+import com.coforge.entity.Engine;
+public class CarMarshaller {
+
+	public static void main(String[] args) throws FileNotFoundException, JAXBException{
+		new CarMarshaller().runMarshaller();
+				
+	}
+	
+	private void runMarshaller() throws JAXBException, FileNotFoundException{
+		Car car = createCar();
+		
+		JAXBContext context = JAXBContext.newInstance(Car.class);
+		Marshaller marshaller = context.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		
+		FileOutputStream fileOutputStream= new FileOutputStream(new File("C:\\FullStack\\Jaxb\\car.xml"));
+		
+		marshaller.marshal(car, fileOutputStream); 
+		
+	}
+	@SuppressWarnings("unused")
+	private Car createCar() {
+		// TODO Auto-generated method stub
+		Engine engine = new Engine(4,5,6);
+		Car car = new Car(1, "Maruti", "VDI", engine);
+		
+		return car;
+		
+	}
+}

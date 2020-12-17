@@ -1,0 +1,48 @@
+package com.coforge.entity;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Bank {
+	private int acc;
+	private int balance;
+	private Customer customer;
+	
+	public Bank() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	public Bank(int acc, int balance, Customer customer) {
+		super();
+		this.acc = acc;
+		this.balance = balance;
+		this.customer = customer;
+	}
+
+	public int getAcc() {
+		return acc;
+	}
+
+	public void setAcc(int acc) {
+		this.acc = acc;
+	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+
+}

@@ -1,0 +1,46 @@
+package com.coforge.UnMarshaller;
+
+import java.io.File;
+
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.xml.sax.SAXException;
+
+import com.coforge.entity.Car;
+import com.coforge.entity.Employee;
+
+public class CarUnMarshaller {
+	
+	public static void main(String[] args) throws JAXBException, SAXException{
+		
+		JAXBContext context = JAXBContext.newInstance(Car.class);
+		
+		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+		Schema schema = sf.newSchema(new File("C:\\FullStack\\WorkSpace\\JAXBProject\\src\\com\\coforge\\entity\\Employee1.xsd"));
+		
+		Unmarshaller unmarshaller = context.createUnmarshaller(); 
+		unmarshaller.setSchema(schema);
+		unmarshaller.setEventHandler(new CarValidationEventHandler());
+		Car car = (Car) unmarshaller.unmarshal(new File("C:\\FullStack\\Jaxb\\person.xml"));
+		
+		System.out.println(car.getCar_id()); 
+		System.out.println(car.getCar_comapny());
+		System.out.println(car.getCar_model());
+		System.out.println(car.getCar_makeYEAR());
+		System.out.println(car.getEngine());
+		System.out.println(employee.getAddress().getAddressLine1());
+		System.out.println(employee.getAddress().getAddressLine2());
+		System.out.println(employee.getAddress().getCity());
+		System.out.println(employee.getAddress().getState());
+		System.out.println(employee.getAddress().getCountry());
+		System.out.println(employee.getAddress().getZipCode());
+		 
+}
+}
+
+}

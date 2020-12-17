@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="car" type="car"/>
+
+  <xs:complexType name="car">
+    <xs:sequence>
+      <xs:element name="car_comapny" type="xs:string" minOccurs="0"/>
+      <xs:element name="car_id" type="xs:int"/>
+      <xs:element name="car_makeYEAR" type="xs:int"/>
+      <xs:element name="car_model" type="xs:string" minOccurs="0"/>
+      <xs:element name="engine" type="engine" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="engine">
+    <xs:sequence>
+      <xs:element name="egineNo" type="xs:int"/>
+      <xs:element name="hp" type="xs:int"/>
+      <xs:element name="speed" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

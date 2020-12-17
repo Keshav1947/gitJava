@@ -1,0 +1,9 @@
+package com.coforge.entity;
+
+@XmlType
+public class Engine {
+	int egineNo;
+	int hp;
+	int speed;
+
+}

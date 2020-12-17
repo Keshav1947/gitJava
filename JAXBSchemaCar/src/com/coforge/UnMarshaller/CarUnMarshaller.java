@@ -1,0 +1,64 @@
+package com.coforge.UnMarshaller;
+
+import java.io.File;
+
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.xml.sax.SAXException;
+
+import com.coforge.entity.Car;
+
+public class CarUnMarshaller {
+
+	public static void main(String[] args) throws JAXBException, SAXException{
+		
+			JAXBContext context = JAXBContext.newInstance(Car.class);
+			
+			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			Schema schema = sf.newSchema(new File("C:\\FullStack\\WorkSpace\\JAXBSchemaCar\\src\\com\\coforge\\entity\\Car1.xsd"));
+			
+			Unmarshaller unmarshaller = context.createUnmarshaller(); 
+			unmarshaller.setSchema(schema);
+			unmarshaller.setEventHandler(new CarValidationEventHandler());
+			Car car = (Car) unmarshaller.unmarshal(new File("C:\\FullStack\\Jaxb\\car.xml"));
+			
+			System.out.println(car.getCar_id());
+			System.out.println(car.getCar_comapny());
+			System.out.println(car.getCar_model());
+			System.out.println(car.getCar_makeYEAR());
+			System.out.println(car.getEngine().getEgineNo());
+			System.out.println(car.getEngine().getSpeed());
+			System.out.println(car.getEngine().getHp());
+			
+			 
+	}
+}
+
+class CarValidationEventHandler implements ValidationEventHandler{
+
+	@Override
+	public boolean handleEvent(ValidationEvent event) {
+		// TODO Auto-generated method stub
+		System.out.print("\nEvent");
+		System.out.print("SEVERITY: " + event.getSeverity());
+		System.out.print("MESSAGE: " + event.getMessage());
+		System.out.print("LINKED EXCEPTION: " + event.getLinkedException());
+		System.out.print("LOCATOR");
+		System.out.print("LINE NUMBER: " + event.getLocator().getLineNumber());
+		System.out.print("column NUMBER: " + event.getLocator().getColumnNumber());
+		System.out.print("offset: " + event.getLocator().getOffset());
+		System.out.print("object: " + event.getLocator().getObject());
+		System.out.print("node: " + event.getLocator().getNode());
+		System.out.print("url: " + event.getLocator().getURL());
+		
+		return true;
+	}
+	
+}
