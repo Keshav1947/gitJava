@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<car>
+    <car_comapny>Maruti</car_comapny>
+    <car_id>1</car_id>
+    <car_makeYEAR>2020</car_makeYEAR>
+    <car_model>VDI</car_model>
+    <engine>
+        <egineNo>4</egineNo>
+        <hp>5</hp>
+        <speed>6</speed>
+    </engine>
+</car>

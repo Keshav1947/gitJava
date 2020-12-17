@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bank>
+    <acc>8565</acc>
+    <balance>85462</balance>
+    <customer>
+        <address>Delhi</address>
+        <cust_id>17</cust_id>
+        <cust_name>Keshav</cust_name>
+        <phone>985631478</phone>
+    </customer>
+</bank>
